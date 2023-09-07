@@ -47,6 +47,11 @@ public class AntiHeroService {
         antiHeroRepository.deleteById(id);
     }
 
+    public Iterable<AntiHeroEntity> getAllAntiHeroes(){
+
+        return antiHeroRepository.findAll();
+    }
+
     public AntiHeroEntity findOrThrow(UUID id){
 
         return antiHeroRepository.findById(id).orElseThrow(() -> new NotFoundException(
