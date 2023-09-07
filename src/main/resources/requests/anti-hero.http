@@ -1,0 +1,31 @@
+### post request
+POST http://localhost:8080/api/v1/anti_hero
+Content-Type: application/json
+
+{
+  "firstName": "murnga",
+  "lastName": "evans",
+  "house": "piloti",
+  "knownAs": "ninja"
+}
+
+###get all request
+GET http://localhost:8080/api/v1/anti_hero
+
+### get one
+GET http://localhost:8080/api/v1/anti_hero/5d2bc499-5e40-4ff5-b5f4-21b707caf7ba
+
+###update one
+PUT http://localhost:8080/api/v1/anti_hero/5d2bc499-5e40-4ff5-b5f4-21b707caf7ba
+Content-Type: application/json
+
+{
+  "id": "5d2bc499-5e40-4ff5-b5f4-21b707caf7ba",
+  "firstName": "murunga",
+  "lastName": "evans",
+  "house": "majuu",
+  "knownAs": "broski"
+}
+
+### delete
+DELETE http://localhost:8080/api/v1/anti_hero/5d2bc499-5e40-4ff5-b5f4-21b707caf7ba
