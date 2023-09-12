@@ -7,6 +7,7 @@ import com.kamar.web_impl_full_stack.antihero.service.AntiHeroService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -68,7 +69,9 @@ public class AntiHeroController {
     /**
      * get all anti-heroes*/
     @GetMapping
-    public ResponseEntity<List<AntiHeroDTO>> getAllAntiHeroes(){
+    public ResponseEntity<List<AntiHeroDTO>> getAllAntiHeroes(Pageable pageable){
+
+        int skip = pageable.getPageNumber() * pageable.getPageSize();
 
         /*get all anti-heroes from the database*/
         Iterable<AntiHeroEntity> allAntiHeroes = antiHeroService.getAllAntiHeroes();
