@@ -61,7 +61,7 @@ public class AntiHeroController {
         catch (NotFoundException exception){
 
             /*catch and notify the user*/
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
 
@@ -76,7 +76,7 @@ public class AntiHeroController {
         List<AntiHeroDTO> antiHeroDTOList = StreamSupport.stream(allAntiHeroes.spliterator(), false)
                 .map(this::convertToDTO).collect(Collectors.toList());
 
-        return new ResponseEntity<>(antiHeroDTOList, HttpStatus.OK);
+        return ResponseEntity.ok(antiHeroDTOList);
     }
 
     /**
@@ -96,7 +96,7 @@ public class AntiHeroController {
         }
         catch (NotFoundException exception){
 
-            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
     }
 
@@ -117,13 +117,13 @@ public class AntiHeroController {
             /*update the entity*/
             antiHeroService.updateAntiHero(id, antiHeroEntity);
 
-            return new ResponseEntity<>(dto, HttpStatus.OK);
+            return  ResponseEntity.status(HttpStatus.CREATED).body(dto);
 
         }
         catch (NotFoundException exception){
 
             /*catch and notify*/
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
 
         }
     }
