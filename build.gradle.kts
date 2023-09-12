@@ -27,6 +27,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-data-rest
+    implementation("org.springdoc:springdoc-openapi-data-rest:1.7.0")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
@@ -39,8 +41,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     // https://mvnrepository.com/artifact/redis.clients/jedis
     implementation("redis.clients:jedis")
+    implementation("org.projectlombok:lombok")
 
-    compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("org.postgresql:postgresql")
