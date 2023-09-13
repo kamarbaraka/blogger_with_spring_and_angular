@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -26,6 +27,7 @@ import java.util.stream.StreamSupport;
 @RestController
 @RequestMapping(value = {"/api/v1/anti_hero"})
 @AllArgsConstructor
+@CrossOrigin(allowedHeaders = {"Content-Type"})
 public class AntiHeroController {
 
     private final AntiHeroService antiHeroService;
@@ -47,7 +49,8 @@ public class AntiHeroController {
 
     /**
      * get anti-hero by id.*/
-    @GetMapping(value = {"/{id}"})
+    @GetMapping(value = {"/{id}"}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @CrossOrigin(methods = {RequestMethod.GET})
     public ResponseEntity<AntiHeroDTO> getAntiHero(@PathVariable("id") UUID id){
 
         try
@@ -135,6 +138,7 @@ public class AntiHeroController {
     }
 
     @DeleteMapping(value = {"/{id}"})
+    @CrossOrigin(methods = {RequestMethod.DELETE})
     public ResponseEntity<String > deleteAntiHero(@PathVariable("id") UUID id){
 
         try{
