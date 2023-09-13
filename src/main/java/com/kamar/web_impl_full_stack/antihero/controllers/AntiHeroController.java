@@ -69,6 +69,7 @@ public class AntiHeroController {
     /**
      * get all anti-heroes*/
     @GetMapping
+    @CrossOrigin(methods = {RequestMethod.GET})
     public ResponseEntity<List<AntiHeroDTO>> getAllAntiHeroes(Pageable pageable){
 
         int skip = pageable.getPageNumber() * pageable.getPageSize();
@@ -77,7 +78,7 @@ public class AntiHeroController {
         Iterable<AntiHeroEntity> allAntiHeroes = antiHeroService.getAllAntiHeroes();
         /*convert to a list*/
         List<AntiHeroDTO> antiHeroDTOList = StreamSupport.stream(allAntiHeroes.spliterator(), false)
-                .map(this::convertToDTO).collect(Collectors.toList());
+                .map(this::convertToDTO).toList();
 
         return ResponseEntity.ok(antiHeroDTOList);
     }
@@ -85,6 +86,7 @@ public class AntiHeroController {
     /**
      * add an anti-hero*/
     @PostMapping
+    @CrossOrigin(methods = {RequestMethod.POST})
     public ResponseEntity<AntiHeroDTO> postAntiHero(@Valid @RequestBody AntiHeroDTO dto){
 
         try
@@ -106,6 +108,7 @@ public class AntiHeroController {
     /**
      * update anti-hero.*/
     @PutMapping(value = {"/{id}"})
+    @CrossOrigin(methods = {RequestMethod.PUT})
     public ResponseEntity<AntiHeroDTO> putAntiHero(@PathVariable("id") UUID id, @Valid @RequestBody AntiHeroDTO dto){
 
         try{
