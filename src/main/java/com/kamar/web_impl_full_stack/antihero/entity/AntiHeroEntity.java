@@ -3,7 +3,6 @@ package com.kamar.web_impl_full_stack.antihero.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.data.redis.core.RedisHash;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,7 +13,6 @@ import java.util.UUID;
  * @author kamar baraka.*/
 
 @Entity
-@RedisHash
 @Table(name = "anti_hero")
 @Getter
 @Setter

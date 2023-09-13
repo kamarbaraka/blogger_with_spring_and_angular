@@ -10,7 +10,6 @@ import java.util.UUID;
  * the anti-hero dto (data transfer object)
  * @author kamar baraka.*/
 
-
 @Getter
 @Setter
 public class AntiHeroDTO {
