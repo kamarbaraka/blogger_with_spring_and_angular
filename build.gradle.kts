@@ -30,6 +30,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-data-rest
     implementation("org.springdoc:springdoc-openapi-data-rest:1.7.0")
 
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    implementation("org.springframework.boot:spring-boot-starter-security:3.1.3")
+
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     implementation("org.springframework.boot:spring-boot-starter-web:3.1.3")
