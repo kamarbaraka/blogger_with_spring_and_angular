@@ -11,12 +11,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 /**
@@ -90,6 +90,7 @@ public class AntiHeroController {
      * add an anti-hero*/
     @PostMapping
     @CrossOrigin(methods = {RequestMethod.POST})
+    @PreAuthorize(value = "authentication")
     public ResponseEntity<AntiHeroDTO> postAntiHero(@Valid @RequestBody AntiHeroDTO dto){
 
         try
@@ -139,6 +140,7 @@ public class AntiHeroController {
 
     @DeleteMapping(value = {"/{id}"})
     @CrossOrigin(methods = {RequestMethod.DELETE})
+    @PreAuthorize(value = "authentication")
     public ResponseEntity<String > deleteAntiHero(@PathVariable("id") UUID id){
 
         try{
