@@ -152,5 +152,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void removeUserById(UUID id) {
 
+        /*check if user exists*/
+        this.findOrThrow(id);
+        /*delete the user*/
+        userRepository.deleteById(id);
+
     }
 }
