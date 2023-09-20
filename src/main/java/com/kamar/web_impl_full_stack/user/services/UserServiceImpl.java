@@ -7,6 +7,7 @@ import com.kamar.web_impl_full_stack.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -87,7 +88,34 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTOImpl createUser(UserDTOImpl userDTO, String password) {
-        return null;
+    public UserDTOImpl createUser(UserDTOImpl userDTO, String password) throws NoSuchAlgorithmException {
+        /*check if password is provided*/
+        if (password.isBlank())
+            throw new IllegalArgumentException("password needed");
+
+        /*check if email exists*/
+        boolean emailExists = userRepository.existsByEmail(userDTO.getEmail());
+        if (emailExists)
+            throw new BadCredentialsException("email "+ userDTO.getEmail() +" is taken");
+
+        /*create a salt */
+        byte[] salt = createSalt();
+
+        /*hash the user password*/
+        byte[] passwordHash = createPasswordHash(password, salt);
+
+        /*convert the user DTO to entity*/
+        UserEntity user = convertToUserEntity(userDTO);
+
+        /*set the user password salt and hash*/
+        user.setStoredSalt(salt);
+        user.setStoredHash(passwordHash);
+
+        /*persist the user*/
+        userRepository.save(user);
+
+        /*return the user*/
+        return convertToDTO(user);
+
     }
 }
