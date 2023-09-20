@@ -88,7 +88,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTOImpl createUser(UserDTOImpl userDTO, String password) {
-        System.out.println("hello");
         return null;
     }
 }
