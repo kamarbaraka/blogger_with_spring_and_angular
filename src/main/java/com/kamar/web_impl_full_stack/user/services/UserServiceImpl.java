@@ -118,4 +118,39 @@ public class UserServiceImpl implements UserService {
         return convertToDTO(user);
 
     }
+
+    @Override
+    public void updateUser(UUID id, UserDTOImpl userDTO, String password) throws NoSuchAlgorithmException {
+
+        /*check if user exists and fetch the user if exists*/
+        UserEntity user = this.findOrThrow(id);
+
+        /*convert the dto to entity*/
+        UserEntity userProperties = this.convertToUserEntity(userDTO);
+
+        /*set the updated properties*/
+        user.setEmail(userProperties.getEmail());
+        user.setMobileNumber(userProperties.getMobileNumber());
+
+        /*check if password change and update the password*/
+        if (!password.isBlank()){
+
+            /*create the salt*/
+            byte[] salt = this.createSalt();
+            /*create the hash*/
+            byte[] passwordHash = this.createPasswordHash(password, salt);
+
+            /*set the properties*/
+            user.setStoredSalt(salt);
+            user.setStoredHash(passwordHash);
+        }
+
+        /*persist the user*/
+        userRepository.save(user);
+    }
+
+    @Override
+    public void removeUserById(UUID id) {
+
+    }
 }
