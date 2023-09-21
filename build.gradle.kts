@@ -32,6 +32,11 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
     implementation("org.springframework.boot:spring-boot-starter-security:3.1.3")
+    // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
+    implementation("io.jsonwebtoken:jjwt-impl:0.11.5")
+    // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson
+    implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
