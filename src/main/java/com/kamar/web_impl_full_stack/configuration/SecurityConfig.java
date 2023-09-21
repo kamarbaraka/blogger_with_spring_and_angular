@@ -27,6 +27,8 @@ public class SecurityConfig  {
                 authorize.requestMatchers(AntPathRequestMatcher.antMatcher("/**")).permitAll().anyRequest().authenticated()).sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
+
+
         /*build and return the configured http security*/
         return httpSecurity.build();
     }
