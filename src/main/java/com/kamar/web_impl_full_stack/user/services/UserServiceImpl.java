@@ -21,8 +21,8 @@ import java.util.UUID;
  * the user service implementation.
  * @author kamar baraka.*/
 
-@Primary
 @Service
+@Primary
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 

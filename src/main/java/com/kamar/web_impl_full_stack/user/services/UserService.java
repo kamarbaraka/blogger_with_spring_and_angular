@@ -13,7 +13,6 @@ import java.util.UUID;
  * the user service.
  * @author kamar baraka.*/
 
-@Service
 public interface UserService {
     UserEntity findOrThrow(final UUID userId);
     List<UserDTOImpl> getAllUsers();
