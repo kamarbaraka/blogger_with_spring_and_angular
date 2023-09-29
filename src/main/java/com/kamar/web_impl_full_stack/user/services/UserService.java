@@ -20,5 +20,6 @@ public interface UserService {
     UserDTOImpl createUser(UserDTOImpl userDTO, String password) throws NoSuchAlgorithmException;
     void updateUser(UUID id, UserDTOImpl userDTO, String password) throws NoSuchAlgorithmException;
     void removeUserById(UUID id);
+    UserEntity findByEmail(String email);
 
 }
